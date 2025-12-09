@@ -77,11 +77,6 @@ CI/CD is managed through GitLab → CodePipeline → CodeBuild.
 
 ---
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
-
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
-
-
 ### 4. Technical Implementation  
 
 - Configure VPC, subnets, and security groups  
