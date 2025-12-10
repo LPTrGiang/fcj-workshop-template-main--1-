@@ -7,20 +7,7 @@ pre: " <b> 3.2. </b> "
 ---
 ---
 title: "Enabling Digital Transformation to Advance Healthcare"
-date: 2025-06-24T09:00:00+07:00
-draft: false
-author: ["Michael Leonard"]
-tags: [
-  "Healthcare",
-  "Artificial Intelligence",
-  "AWS Marketplace",
-  "AWS Partner Network",
-  "Cloud",
-  "Thought Leadership"
-]
-categories: ["Healthcare", "Digital Transformation"]
-description: "How digital transformation, powered by AI and cloud technologies, is reshaping the healthcare industry. Insights from Forrester research and healthcare technology leaders."
-slug: "digital-transformation-healthcare"
+
 ---
 
 ## Enabling Digital Transformation to Advance Healthcare  
