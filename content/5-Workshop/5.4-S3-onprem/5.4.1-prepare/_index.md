@@ -6,19 +6,21 @@ chapter : false
 pre : " <b> 5.4.1 </b> "
 ---
 
-To prepare for this part of the workshop you will need to:
-+ Deploying a CloudFormation stack 
-+ Modifying a VPC route table. 
+To prepare for this part of the workshop, you will need to:
++ Deploy a CloudFormation stack
++ Modify a VPC route table
 
 These components work together to simulate on-premises DNS forwarding and name resolution.
 
+---
+
 #### Deploy the CloudFormation stack
 
-The CloudFormation template will create additional services to support an on-premises simulation:
-+ One Route 53 Private Hosted Zone that hosts Alias records for the PrivateLink S3 endpoint
-+ One Route 53 Inbound Resolver endpoint that enables "VPC Cloud" to resolve inbound DNS resolution requests to the Private Hosted Zone
-+ One Route 53 Outbound Resolver endpoint that enables "VPC On-prem" to forward DNS requests for S3 to "VPC Cloud"
+The CloudFormation template creates additional services required to simulate an on-premises environment:
 
++ A Route 53 Private Hosted Zone that hosts Alias records for the PrivateLink S3 endpoint  
++ A Route 53 **Inbound Resolver endpoint** that allows **VPC Cloud** to resolve inbound DNS queries to the Private Hosted Zone  
++ A Route 53 **Outbound Resolver endpoint** that allows **VPC On-prem** to forward DNS queries for S3 to **VPC Cloud**
 ![route 53 diagram](/images/5-Workshop/5.4-S3-onprem/route53.png)
 
 1. Click the following link to open the [AWS CloudFormation console](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.amazonaws.com/reinvent-endpoints-builders-session/R53CF.yaml&stackName=PLOnpremSetup). The required template will be pre-loaded into the menu. Accept all default and click Create stack.
@@ -31,11 +33,20 @@ It may take a few minutes for stack deployment to complete. You can continue wit
 
 #### Update on-premise private route table
 
-This workshop uses a strongSwan VPN running on an EC2 instance to simulate connectivty between an on-premises datacenter and the AWS cloud. Most of the required components are provisioned before your start. To finalize the VPN configuration, you will modify the "VPC On-prem" routing table to direct traffic destined for the cloud to the strongSwan VPN instance.
+The stack may take several minutes to deploy. You may proceed to the next step without waiting for completion.
 
-1. Open the Amazon EC2 console 
+---
 
-2. Select the instance named infra-vpngw-test. From the Details tab, copy the Instance ID and paste this into your text editor
+#### Update the on-premises private route table
+
+This workshop uses a **strongSwan VPN** running on an EC2 instance to simulate connectivity between an on-premises datacenter and the AWS Cloud.  
+Most components are pre-provisioned, but to finalize the configuration you must update the **VPC On-prem** route table so that traffic destined for the cloud is routed through the strongSwan VPN instance.
+
+1. Open the **Amazon EC2 console**.
+
+2. Select the instance named **infra-vpngw-test**.  
+   On the *Details* tab, copy the **Instance ID** and paste it into a text editor for later reference.
+
 
 ![ec2 id](/images/5-Workshop/5.4-S3-onprem/ec2-onprem-id.png)
 

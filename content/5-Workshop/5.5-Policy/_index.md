@@ -6,17 +6,17 @@ chapter : false
 pre : " <b> 5.5. </b> "
 ---
 
-When you create an interface or gateway endpoint, you can attach an endpoint policy to it that controls access to the service to which you are connecting. A VPC endpoint policy is an IAM resource policy that you attach to an endpoint. If you do not attach a policy when you create an endpoint, AWS attaches a default policy for you that allows full access to the service through the endpoint.
+When you create an interface or gateway endpoint, you can attach an endpoint policy that controls access to the AWS service the endpoint connects to. A VPC endpoint policy is an IAM resource policy applied directly to the endpoint.  
+If you do not specify a policy when creating the endpoint, AWS applies a default policy that allows full access to the service through that endpoint.
 
-You can create a policy that restricts access to specific S3 buckets only. This is useful if you only want certain S3 Buckets to be accessible through the endpoint.
+You can modify the policy to restrict access to specific Amazon S3 buckets. This is useful when you want workloads inside your VPC to access only approved S3 buckets.
 
-In this section you will create a VPC endpoint policy that restricts access to the S3 bucket specified in the VPC endpoint policy.
-
+In this section, you will create a VPC endpoint policy that restricts access to only the S3 bucket specified in the policy.
 ![endpoint diagram](/images/5-Workshop/5.5-Policy/s3-bucket-policy.png)
 
 #### Connect to an EC2 instance and verify connectivity to S3
-
-1. Start a new AWS Session Manager session on the instance named Test-Gateway-Endpoint. From the session, verify that you can list the contents of the bucket you created in Part 1: Access S3 from VPC:
+1. Start a new AWS Systems Manager Session Manager session on the instance named **Test-Gateway-Endpoint**.  
+   From the session, verify you can list the contents of the bucket you created in **Part 1: Access S3 from VPC**:
 
 ```
 aws s3 ls s3://\<your-bucket-name\>

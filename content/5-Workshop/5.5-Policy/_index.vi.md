@@ -6,17 +6,20 @@ chapter : false
 pre : " <b> 5.5 </b> "
 ---
 
-Khi bạn tạo một Interface Endpoint  hoặc cổng, bạn có thể đính kèm một chính sách điểm cuối để kiểm soát quyền truy cập vào dịch vụ mà bạn đang kết nối. Chính sách VPC Endpoint là chính sách tài nguyên IAM mà bạn đính kèm vào điểm cuối. Nếu bạn không đính kèm chính sách khi tạo điểm cuối, thì AWS sẽ đính kèm chính sách mặc định cho bạn để cho phép toàn quyền truy cập vào dịch vụ thông qua điểm cuối.
+Khi tạo điểm cuối giao diện hoặc cổng, bạn có thể đính kèm chính sách điểm cuối để kiểm soát quyền truy cập vào dịch vụ AWS mà điểm cuối đó kết nối. Chính sách điểm cuối VPC là chính sách tài nguyên IAM được áp dụng trực tiếp cho điểm cuối.
 
-Bạn có thể tạo chính sách chỉ hạn chế quyền truy cập vào các S3 bucket cụ thể. Điều này hữu ích nếu bạn chỉ muốn một số Bộ chứa S3 nhất định có thể truy cập được thông qua điểm cuối.
+Nếu bạn không chỉ định chính sách khi tạo điểm cuối, AWS sẽ áp dụng chính sách mặc định cho phép truy cập đầy đủ vào dịch vụ thông qua điểm cuối đó.
 
-Trong phần này, bạn sẽ tạo chính sách VPC Endpoint hạn chế quyền truy cập vào S3 bucket được chỉ định trong chính sách VPC Endpoint.
+Bạn có thể sửa đổi chính sách để hạn chế quyền truy cập vào các thùng Amazon S3 cụ thể. Điều này hữu ích khi bạn muốn các khối lượng công việc bên trong VPC chỉ truy cập vào các thùng S3 được phê duyệt.
+
+Trong phần này, bạn sẽ tạo chính sách điểm cuối VPC để hạn chế quyền truy cập vào thùng S3 được chỉ định trong chính sách.
 
 ![endpoint diagram](/images/5-Workshop/5.5-Policy/s3-bucket-policy.png)
 
 #### Kết nối tới EC2 và xác minh kết nối tới S3. 
 
-1. Bắt đầu một phiên AWS Session Manager mới trên máy chủ có tên là Test-Gateway-Endpoint. Từ phiên này, xác minh rằng bạn có thể liệt kê nội dung của bucket mà bạn đã tạo trong Phần 1: Truy cập S3 từ VPC.
+1. Khởi tạo một phiên AWS Systems Manager Session Manager mới trên phiên bản có tên **Test-Gateway-Endpoint**.
+Từ phiên này, hãy xác minh bạn có thể liệt kê nội dung của nhóm lưu trữ (bucket) mà bạn đã tạo trong **Phần 1: Truy cập S3 từ VPC**:
 
 ```
 aws s3 ls s3://<your-bucket-name>

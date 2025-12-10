@@ -8,7 +8,8 @@ pre : " <b> 5.3. </b> "
 
 #### Using Gateway endpoint
 
-In this section, you will create **a Gateway eendpoint** to access **Amazon S3** from **an EC2 instance**. **The Gateway endpoint** will allow upload an object to S3 buckets without using **the Public Internet**. To create an endpoint, you must specify the VPC in which you want to create the endpoint, and the service (in this case, S3) to which you want to establish the connection.
+In this section, you will set up a Gateway endpoint so that an EC2 instance can access Amazon S3 privately. By using the Gateway endpoint, all uploads to your S3 buckets stay within the AWS network and do not traverse the public internet.
+To create the endpoint, you simply choose the target VPC and specify Amazon S3 as the service you want to connect to.
 
 ![overview](/images/5-Workshop/5.3-S3-vpc/diagram2.png)
 

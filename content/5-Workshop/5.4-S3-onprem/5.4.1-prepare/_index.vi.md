@@ -6,18 +6,17 @@ chapter : false
 pre : " <b> 5.4.1 </b> "
 ---
 
-Để chuẩn bị cho phần này của workshop, bạn sẽ cần phải:
-+ Triển khai CloudFormation stack
-+ Sửa đổi bảng định tuyến VPC.
+Các thành phần này hoạt động cùng nhau để mô phỏng chuyển tiếp DNS và phân giải tên tại chỗ.
 
-Các thành phần này hoạt động cùng nhau để mô phỏng DNS forwarding và name resolution.
+---
 
-#### Triển khai CloudFormation stack
+#### Triển khai ngăn xếp CloudFormation
 
-Mẫu CloudFormation sẽ tạo các dịch vụ bổ sung để hỗ trợ mô phỏng môi trường truyền thống:
-+ Một Route 53 Private Hosted Zone lưu trữ các bản ghi Bí danh (Alias records) cho điểm cuối PrivateLink S3
-+ Một Route 53 Inbound Resolver endpoint cho phép "VPC Cloud" giải quyết các yêu cầu resolve DNS gửi đến Private Hosted Zone
-+ Một Route 53 Outbound Resolver endpoint cho phép "VPC On-prem" chuyển tiếp các yêu cầu DNS cho S3 sang "VPC Cloud"
+Mẫu CloudFormation tạo các dịch vụ bổ sung cần thiết để mô phỏng môi trường tại chỗ:
+
++ Vùng lưu trữ riêng Route 53 lưu trữ bản ghi bí danh cho điểm cuối PrivateLink S3
++ Điểm cuối **Bộ giải quyết nội bộ Route 53** cho phép **VPC Cloud** phân giải các truy vấn DNS đến đến Vùng lưu trữ riêng
++ Điểm cuối **Bộ giải quyết nội bộ Route 53** cho phép **VPC On-prem** chuyển tiếp các truy vấn DNS từ S3 đến **VPC Cloud**
 
 ![route 53 diagram](/images/5-Workshop/5.4-S3-onprem/route53.png)
 
@@ -27,15 +26,21 @@ Mẫu CloudFormation sẽ tạo các dịch vụ bổ sung để hỗ trợ mô 
 
 ![Button](/images/5-Workshop/5.4-S3-onprem/create-stack-button.png)
 
-Có thể mất vài phút để triển khai stack hoàn tất. Bạn có thể tiếp tục với bước tiếp theo mà không cần đợi quá trình triển khai kết thúc.
+Quá trình triển khai có thể mất vài phút. Bạn có thể chuyển sang bước tiếp theo mà không cần chờ hoàn tất.
 
-####  Cập nhật bảng định tuyến private on-premise 
+---
 
-Workshop này sử dụng StrongSwan VPN chạy trên EC2 instance để mô phỏng khả năng kết nối giữa trung tâm dữ liệu truyền thống và môi trường cloud AWS. Hầu hết các thành phần bắt buộc đều được cung cấp trước khi bạn bắt đầu. Để hoàn tất cấu hình VPN, bạn sẽ sửa đổi bảng định tuyến "VPC on-prem" để hướng lưu lượng đến cloud đi qua StrongSwan VPN instance.
+#### Cập nhật bảng định tuyến riêng tại chỗ
 
-1. Mở Amazon EC2 console 
+Hội thảo này sử dụng **strongSwan VPN** chạy trên một phiên bản EC2 để mô phỏng kết nối giữa trung tâm dữ liệu tại chỗ và đám mây AWS.
 
-2. Chọn instance tên infra-vpngw-test. Từ Details tab, copy Instance ID và paste vào text editor của bạn để sử dụng ở những bước tiếp theo
+Hầu hết các thành phần đã được cung cấp sẵn, nhưng để hoàn tất cấu hình, bạn phải cập nhật bảng định tuyến **VPC On-prem** để lưu lượng truy cập hướng đến đám mây được định tuyến qua phiên bản strongSwan VPN.
+
+1. Mở **bảng điều khiển Amazon EC2**.
+
+2. Chọn phiên bản có tên **infra-vpngw-test**.
+
+Trên tab *Chi tiết*, sao chép **ID phiên bản** và dán vào trình soạn thảo văn bản để tham khảo sau này.
 
 ![ec2 id](/images/5-Workshop/5.4-S3-onprem/ec2-onprem-id.png)
 

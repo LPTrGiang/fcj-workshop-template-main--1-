@@ -8,7 +8,9 @@ pre : " <b> 5.3. </b> "
 
 #### Sử dụng Gateway endpoint
 
-Trong phần này, bạn sẽ tạo một Gateway endpoint để truy cập Amazon S3 từ một EC2 instance. Gateway endpoint sẽ cho phép tải một object lên S3 bucket mà không cần sử dụng Internet Công cộng. Để tạo endpoint, bạn phải chỉ định VPC mà bạn muốn tạo endpoint và dịch vụ (trong trường hợp này là S3) mà bạn muốn thiết lập kết nối.
+Trong phần này, bạn sẽ thiết lập điểm cuối Gateway để một phiên bản EC2 có thể truy cập Amazon S3 một cách riêng tư. Bằng cách sử dụng điểm cuối Gateway, tất cả các nội dung tải lên các bucket S3 của bạn đều nằm trong mạng AWS và không đi qua internet công cộng.
+
+Để tạo điểm cuối, bạn chỉ cần chọn VPC mục tiêu và chỉ định Amazon S3 là dịch vụ bạn muốn kết nối.
 
 ![overview](/images/5-Workshop/5.3-S3-vpc/diagram2.png)
 
