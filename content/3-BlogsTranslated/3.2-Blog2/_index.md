@@ -1,4 +1,11 @@
 ---
+title: "Blog 2"
+date: "`r Sys.Date()`"
+weight: 2
+chapter: false
+pre: " <b> 3.2. </b> "
+---
+---
 title: "Enabling Digital Transformation to Advance Healthcare"
 date: 2025-06-24T09:00:00+07:00
 draft: false
