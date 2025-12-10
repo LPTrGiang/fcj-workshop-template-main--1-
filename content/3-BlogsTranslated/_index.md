@@ -1,4 +1,5 @@
-﻿---
+﻿
+---
 title: "Các bài blogs đã dịch"
 date: 2025-09-10
 weight: 2
@@ -6,11 +7,6 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-{{% notice warning %}}  
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-Tại đây sẽ là phần liệt kê, giới thiệu các blogs mà các bạn đã dịch. Ví dụ:
 
 ###  [Blog 1 - Accelerate your Cloud Strategy with Megaport's 25 Gbps Hosted AWS Direct Connect](3.1-Blog1/)
 Two featured articles for June–July 2025 include: (1) Shield AI partners with AWS to bring mission autonomy to a team-scale level in the defense sector, and (2) AWS launches AWS Builder Center, a new home for the builder community with news, guides, and service updates. This is an important source of information to help users grasp AI, IoT, and development trends on AWS.
@@ -20,6 +16,5 @@ Healthcare organizations are under pressure to enhance security, optimize proces
 The combination of AI and cloud computing opens up powerful innovation opportunities.
 This article shares findings from Forrester and expert perspectives on this transformation journey.
 ###  [Blog 3 - Open Protocol for Agent Interoperability Part 4: A2A Agent Communication](3.3-Blog3/)
-Blog này giới thiệu giao thức Agent-to-Agent (A2A) cho phép các tác nhân AI giao tiếp trực tiếp với nhau. Bạn sẽ tìm hiểu cách AWS hỗ trợ A2A thông qua Strands Agents SDK, các tính năng chính như Thẻ Tác nhân, thực hiện nhiệm vụ có cấu trúc, nhiều lựa chọn vận chuyển và bảo mật A2A. Bài viết cũng minh họa ví dụ triển khai agent HR và agent Thông tin Nhân viên sử dụng A2A, cùng phản hồi từ khách hàng về khả năng tương tác đa tác nhân.
-.
+This blog introduces the Agent-to-Agent (A2A) protocol that enables AI agents to communicate directly with each other. You will learn how AWS supports A2A through the Strands Agents SDK, key features such as Agent Tags, structured task execution, multiple transport options, and A2A security. The article also illustrates example deployments of HR agents and Employee Information agents using A2A, and customer feedback on multi-agent interoperability.
 
