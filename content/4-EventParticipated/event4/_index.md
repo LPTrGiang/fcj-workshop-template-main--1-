@@ -1,7 +1,10 @@
 ---
 title: "Event4"
 date: 2025-11-17T08:30:00+07:00
-draft: true
+weight: 1
+chapter: false
+pre: " <b> 4.4. </b> "
+---
 ---
 
 
