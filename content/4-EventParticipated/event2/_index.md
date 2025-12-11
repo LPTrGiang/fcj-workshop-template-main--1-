@@ -1,7 +1,8 @@
 ---
 title: "Event2"
 date: 2025-12-09T19:29:15+07:00
-draft: true
+chapter: false
+pre: " <b> 4.2. </b> "
 ---
 
 
