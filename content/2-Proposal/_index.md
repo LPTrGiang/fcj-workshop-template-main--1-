@@ -65,8 +65,7 @@ CI/CD is managed through GitLab → CodePipeline → CodeBuild.
 - Route 53 → CloudFront  
 - CloudFront serves the ReactJS frontend globally over HTTPS
 
-![AWS Ảnh](/images/2-Proposal/awsanh.jpg)
-
+![AWS Ảnh]({{ "images/2-Proposal/awsanh.jpg" | relURL }})
 
 **Application Layer**  
 - Spring Boot backend deployed on Elastic Beanstalk single-instance  
