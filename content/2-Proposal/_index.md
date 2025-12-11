@@ -68,8 +68,6 @@ CI/CD is managed through GitLab → CodePipeline → CodeBuild.
 ![AWS Ảnh](/images/2-Proposal/awsanh.jpg)
 
 
-
-
 **Application Layer**  
 - Spring Boot backend deployed on Elastic Beanstalk single-instance  
 - Authentication handled with JWT  
