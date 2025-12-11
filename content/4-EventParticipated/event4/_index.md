@@ -6,9 +6,6 @@ draft: true
 
 
 
-{{% notice warning %}}
-⚠️ **Note:** This content is rewritten for variation and should be used only as reference. Do **not copy directly** into your final report.
-{{% /notice %}}
 
 # Summary Report: “Cloud Mastery Series #2: DevOps on AWS”
 

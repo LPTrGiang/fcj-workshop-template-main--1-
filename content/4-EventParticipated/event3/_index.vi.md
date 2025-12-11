@@ -4,9 +4,6 @@ date: 2025-11-15T08:30:18+07:00
 draft: true
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Nội dung dưới đây được viết lại để tham khảo. Vui lòng **không sao chép nguyên văn** vào báo cáo cuối cùng.
-{{% /notice %}}
 
 # Báo cáo Tóm tắt: “AI/ML/GenAI on AWS – Workshop dành cho sinh viên thực tập”
 

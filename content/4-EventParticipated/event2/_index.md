@@ -5,10 +5,6 @@ draft: true
 ---
 
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
-
 # Summary Report: “Defense from Public Threat: AWS WAF & Application Protection”
 
 ### Event Objectives

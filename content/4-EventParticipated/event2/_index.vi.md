@@ -4,9 +4,7 @@ date: 2025-12-09T19:30:30+07:00
 draft: true
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Thông tin bên dưới chỉ dùng để tham khảo. Vui lòng **không sao chép nguyên văn** vào báo cáo của bạn, bao gồm cả cảnh báo này.
-{{% /notice %}}
+
 
 # Báo Cáo Tóm Tắt: “Bảo vệ trước các mối đe dọa công khai: AWS WAF & Application Protection”
 

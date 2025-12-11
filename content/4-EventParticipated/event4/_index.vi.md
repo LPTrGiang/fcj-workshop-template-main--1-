@@ -4,9 +4,6 @@ date: 2025-11-29T08:30:00+07:00
 draft: true
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Nội dung dưới đây được viết lại để tham khảo. Vui lòng **không sao chép nguyên văn** vào báo cáo cuối cùng.
-{{% /notice %}}
 
 # Báo cáo Tóm tắt: “Cloud Mastery Series #2: DevOps on AWS”
 

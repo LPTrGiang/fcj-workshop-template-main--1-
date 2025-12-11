@@ -6,9 +6,7 @@ draft: true
 ---
 
 
-{{% notice warning %}}
-⚠️ **Note:** The content below is rewritten for reference. Please **do not copy it verbatim** into your final report.
-{{% /notice %}}
+
 
 # Summary Report: “AI/ML/GenAI on AWS – Workshop for Intern Students”
 
