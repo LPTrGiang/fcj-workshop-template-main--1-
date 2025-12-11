@@ -1,17 +1,25 @@
 ---
-title: "Introduction"
-date: "`r Sys.Date()`"
+title: "Giới thiệu"
+date: "2025-12-09"
 weight: 1
 chapter: false
 pre: " <b> 5.1. </b> "
 ---
 
-#### VPC endpoints
-+ **VPC endpoints** là các thiết bị ảo được thiết kế theo chiều ngang, có tính sẵn sàng cao và khả năng chịu lỗi. Chúng cho phép tài nguyên tính toán trong VPC giao tiếp với các dịch vụ AWS mà không tạo ra rủi ro về tính sẵn sàng.
-+ Tài nguyên chạy trong VPC có thể truy cập **Amazon S3** thông qua **Gateway endpoint**. Ngoài ra, **PrivateLink Interface endpoints** có thể được sử dụng cho các tài nguyên chạy trong VPC hoặc tại môi trường on-premises.
+## Giới thiệu
 
-#### Workshop overview
-Trong workshop này, bạn sẽ sử dụng hai VPC:
-+ **"VPC Cloud"**: chứa các tài nguyên trên đám mây như **Gateway endpoint** và một EC2 instance dùng để kiểm thử.
-+ **"VPC On-Prem"**: mô phỏng môi trường on-premises (nhà máy hoặc trung tâm dữ liệu doanh nghiệp). Một EC2 instance chạy strongSwan đã được triển khai sẵn và tự động thiết lập kết nối VPN Site-to-Site với AWS Transit Gateway. Kết nối VPN này mô phỏng việc kết nối từ on-premises lên AWS.  
-  Để giảm chi phí, workshop chỉ cung cấp một thiết bị VPN. Trong môi trường production, AWS khuyến nghị triển khai nhiều thiết bị VPN để đảm bảo tính sẵn sàng cao.
+Elastic Beanstalk (EB) là dịch vụ quản lý ứng dụng (Platform as a Service – PaaS) do AWS cung cấp, cho phép triển khai và vận hành các ứng dụng web mà không cần quản lý trực tiếp hạ tầng máy chủ.
+
+Trong workshop này, ứng dụng **Spring Boot REST API** sẽ được triển khai trên môi trường Elastic Beanstalk với cấu hình **Single Instance**, sử dụng **Default VPC** nhằm đảm bảo sự đơn giản, dễ triển khai và phù hợp cho mục đích học tập, thử nghiệm cũng như trình diễn kỹ thuật.
+
+Quy trình triển khai tập trung vào các bước cốt lõi:
+
+- Đóng gói ứng dụng Spring Boot thành file thực thi `.jar`.
+- Tạo Application và Environment trên Elastic Beanstalk.
+- Tải lên và triển khai phiên bản ứng dụng.
+- Kiểm thử hoạt động dịch vụ bằng công cụ Postman.
+- Theo dõi log hệ thống để đánh giá hoạt động và xử lý lỗi nếu có.
+
+Thông qua workshop này, người thực hiện có thể nắm được quy trình triển khai một dịch vụ backend Java lên nền tảng AWS một cách chuẩn hóa, đồng thời hiểu cách Elastic Beanstalk quản lý vòng đời ứng dụng trong mô hình Single Instance.
+
+Đây cũng là bước nền tảng để mở rộng sang các mô hình phức tạp hơn như **Load Balanced Environment**, tích hợp **RDS**, hoặc triển khai **CI/CD** trong các workshop tiếp theo.

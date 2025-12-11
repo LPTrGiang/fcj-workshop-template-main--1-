@@ -1,98 +1,28 @@
 ---
-title : "VPC Endpoint Policies"
-date : "`r Sys.Date()`"
-weight : 5
-chapter : false
-pre : " <b> 5.5 </b> "
+title: "Truy cập ứng dụng và kiểm thử"
+date: "2025-12-09"
+weight: 5
+chapter: false
+pre: " <b> 5.5. </b> "
 ---
 
-Khi tạo điểm cuối giao diện hoặc cổng, bạn có thể đính kèm chính sách điểm cuối để kiểm soát quyền truy cập vào dịch vụ AWS mà điểm cuối đó kết nối. Chính sách điểm cuối VPC là chính sách tài nguyên IAM được áp dụng trực tiếp cho điểm cuối.
+## Truy cập ứng dụng và kiểm thử API bằng Postman
 
-Nếu bạn không chỉ định chính sách khi tạo điểm cuối, AWS sẽ áp dụng chính sách mặc định cho phép truy cập đầy đủ vào dịch vụ thông qua điểm cuối đó.
+Sau khi triển khai thành công, Elastic Beanstalk cung cấp URL dạng:
 
-Bạn có thể sửa đổi chính sách để hạn chế quyền truy cập vào các thùng Amazon S3 cụ thể. Điều này hữu ích khi bạn muốn các khối lượng công việc bên trong VPC chỉ truy cập vào các thùng S3 được phê duyệt.
-
-Trong phần này, bạn sẽ tạo chính sách điểm cuối VPC để hạn chế quyền truy cập vào thùng S3 được chỉ định trong chính sách.
-
-![endpoint diagram](/images/5-Workshop/5.5-Policy/s3-bucket-policy.png)
-
-#### Kết nối tới EC2 và xác minh kết nối tới S3. 
-
-1. Khởi tạo một phiên AWS Systems Manager Session Manager mới trên phiên bản có tên **Test-Gateway-Endpoint**.
-Từ phiên này, hãy xác minh bạn có thể liệt kê nội dung của nhóm lưu trữ (bucket) mà bạn đã tạo trong **Phần 1: Truy cập S3 từ VPC**:
-
-```
-aws s3 ls s3://<your-bucket-name>
-```
-![test](/images/5-Workshop/5.5-Policy/test1.png)
-
-Nội dung của bucket bao gồm hai tệp có dung lượng 1GB đã được tải lên trước đó.
-
-2. Tạo một bucket S3 mới; tuân thủ mẫu đặt tên mà bạn đã sử dụng trong Phần 1, nhưng thêm '-2' vào tên. Để các trường khác là mặc định và nhấp vào **Create**.
-
-![create bucket](/images/5-Workshop/5.5-Policy/create-bucket.png)
-
-3. Tạo bucket thành công.
-
-![Success](/images/5-Workshop/5.5-Policy/create-bucket-success.png)
-
-Policy mặc định cho phép truy cập vào tất cả các S3 Buckets thông qua VPC endpoint.
-
-4. Trong giao diện **Edit Policy**, sao chép và dán theo policy sau, thay thế yourbucketname-2 với tên bucket thứ hai của bạn. Policy này sẽ cho phép truy cập đến bucket mới thông qua VPC endpoint, nhưng không cho phép truy cập đến các bucket còn lại. Chọn **Save** để kích hoạt policy.
-
-
-```
-{
-  "Id": "Policy1631305502445",
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "Stmt1631305501021",
-      "Action": "s3:*",
-      "Effect": "Allow",
-      "Resource": [
-      				"arn:aws:s3:::yourbucketname-2",
-       				"arn:aws:s3:::yourbucketname-2/*"
-       ],
-      "Principal": "*"
-    }
-  ]
-}
+```bash
+http://<environment-id>.<region>.elasticbeanstalk.com
 ```
 
-![custom policy](/images/5-Workshop/5.5-Policy/policy2.png)
+![Ví dụ](/images/2-Proposal/domain.jpg)
 
-Cấu hình policy thành công.
+Sử dụng URL này để gửi yêu cầu từ Postman đến API Spring Boot.
+Ví dụ:
 
-![success](/images/5-Workshop/5.5-Policy/success.png)
-
-5. Từ session của bạn trên Test-Gateway-Endpoint instance, kiểm tra truy cập đến S3 bucket bạn tạo ở bước đầu
-
-```
-aws s3 ls s3://<yourbucketname>
+```bash
+GET http://<env>.elasticbeanstalk.com/api/hello
 ```
 
-Câu lệnh trả về lỗi bởi vì truy cập vào S3 bucket không có quyền trong VPC endpoint policy.
+![ví dụ](/images/2-Proposal/postman.jpg)
 
-![error](/images/5-Workshop/5.5-Policy/error.png)
-
-6. Trở lại home directory của bạn trên EC2 instance ```cd~```
-
-+ Tạo file ```fallocate -l 1G test-bucket2.xyz ```
-+ Sao chép file lên bucket thứ  2 ```aws s3 cp test-bucket2.xyz s3://<your-2nd-bucket-name>```
-
-![success](/images/5-Workshop/5.5-Policy/test2.png)
-
-Thao tác này được cho phép bởi VPC endpoint policy.
-
-![success](/images/5-Workshop/5.5-Policy/test2-success.png)
-
-Sau đó chúng ta kiểm tra truy cập vào S3 bucket đầu tiên
-
- ```aws s3 cp test-bucket2.xyz s3://<your-1st-bucket-name>```
-
- ![fail](/images/5-Workshop/5.5-Policy/test2-fail.png)
-
- Câu lệnh xảy ra lỗi bởi vì bucket không có quyền truy cập bởi VPC endpoint policy.
-
-Trong phần này, bạn đã tạo chính sách VPC Endpoint cho Amazon S3 và sử dụng AWS CLI để kiểm tra chính sách. Các hoạt động AWS CLI liên quan đến bucket S3 ban đầu của bạn thất bại vì bạn áp dụng một chính sách chỉ cho phép truy cập đến bucket thứ hai mà bạn đã tạo. Các hoạt động AWS CLI nhắm vào bucket thứ hai của bạn thành công vì chính sách cho phép chúng. Những chính sách này có thể hữu ích trong các tình huống khi bạn cần kiểm soát quyền truy cập vào tài nguyên thông qua VPC Endpoint.
+Nếu API phản hồi đúng dữ liệu, việc triển khai coi như hoàn tất.
