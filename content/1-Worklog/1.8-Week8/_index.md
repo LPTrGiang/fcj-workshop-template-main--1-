@@ -18,6 +18,5 @@ pre: " <b> 1.8. </b> "
 | 5 | Integrate Lambda + API Gateway | 31/10/2025 | 31/10/2025 |
 | 6 | Summary | 01/11/2025 | 01/11/2025 |
 
-### Achievements:
-* Built a serverless API with Lambda and API Gateway.
+
   

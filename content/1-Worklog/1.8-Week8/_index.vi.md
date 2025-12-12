@@ -17,6 +17,3 @@ pre: " <b> 1.8. </b> "
 | 4 | Tìm hiểu API Gateway | 30/10/2025 | 30/10/2025 |
 | 5 | Tích hợp Lambda + API Gateway | 31/10/2025 | 31/10/2025 |
 | 6 | Tổng kết | 01/11/2025 | 01/11/2025 |
-
-### Kết quả đạt được:
-* Xây dựng được một API serverless bằng Lambda và API Gateway.
