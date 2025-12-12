@@ -4,9 +4,6 @@ weight: 11
 pre: " <b> 1.11. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ Chỉ dùng để tham khảo.
-{{% /notice %}}
 
 ### Mục tiêu Tuần 11:
 * Tích hợp CI/CD với AWS CodePipeline.

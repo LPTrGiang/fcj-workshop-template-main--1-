@@ -4,9 +4,6 @@ weight: 12
 pre: " <b> 1.12. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ Chỉ dùng để tham khảo.
-{{% /notice %}}
 
 ### Mục tiêu Tuần 12:
 * Hoàn thiện toàn bộ kiến thức thực tập.
